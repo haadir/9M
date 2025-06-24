@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-montreal: var(--font-montreal);
+  --font-editorial: var(--font-editorial);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +24,14 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montreal), sans-serif;
+}
+
+/* Custom font utility classes */
+.font-montreal {
+  font-family: var(--font-montreal), sans-serif;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial), serif;
 }
