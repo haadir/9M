@@ -37,13 +37,13 @@ function FlickerLight() {
   );
 }
 
-function HeroAnnouncementTab() {
+function HeroAnnouncementTab({ text }: { text: string }) {
   return (
     <div className="flex items-center justify-center mb-6">
       <div className="flex items-center px-5 py-2 rounded-full bg-[#181824] shadow-[0_0_16px_4px_rgba(176,176,255,0.4)] border border-[#b0b0ff]/30">
         <FlickerLight />
         <span className="text-base font-montreal text-[#e0e0e0] tracking-wide">
-          The future of digital ventures
+          {text}
         </span>
       </div>
     </div>
@@ -106,17 +106,17 @@ export default function Hero() {
         </header>
 
         {/* Announcement Tab */}
-        <HeroAnnouncementTab />
+        <HeroAnnouncementTab text="The future of digital ventures" />
 
         {/* Main content */}
         <div className="z-10 text-center max-w-4xl flex flex-col items-center pb-20 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-montreal mb-6 leading-tight">
-            Focused on building
+            Building and scaling
             <br />
             <span>
-              and{" "}
+              {/* your{" "} */}
               <span className="font-editorial italic">
-                scaling digital ventures.
+                your digital ventures.
               </span>
             </span>
           </h1>
@@ -138,6 +138,11 @@ export default function Hero() {
               className="transition-transform group-hover:translate-x-1 ml-2"
             />
           </button>
+        </div>
+
+        {/* Offers Tab at the bottom */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+          <HeroAnnouncementTab text="Our Offers" />
         </div>
       </section>
     </DotBackground>
