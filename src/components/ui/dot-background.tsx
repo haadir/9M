@@ -10,7 +10,7 @@ export function DotBackground({
   className?: string;
 }) {
   return (
-    <div className={cn("relative min-h-screen w-full bg-black", className)}>
+    <div className={cn("relative min-h-screen w-full bg-[#181818]", className)}>
       <div
         className={cn(
           "absolute inset-0",

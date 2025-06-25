@@ -1,13 +1,9 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { ArrowRight, Mail } from "lucide-react";
 import { DotBackground } from "@/components/ui/dot-background";
-
-const GRID_SIZE = 40; // px
-const FADE_DURATION = 800; // ms for the trail to fade
-const HOVER_GRAY = "#888888"; // The color for hover and trail
 
 const ArrowIcon = () => (
   <svg
@@ -27,13 +23,6 @@ const ArrowIcon = () => (
     />
   </svg>
 );
-
-function getGridDimensions(width: number, height: number) {
-  return {
-    cols: Math.ceil(width / GRID_SIZE),
-    rows: Math.ceil(height / GRID_SIZE),
-  };
-}
 
 function FlickerLight() {
   return (
@@ -62,73 +51,6 @@ function HeroAnnouncementTab() {
 }
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [trail, setTrail] = useState<Map<string, number>>(new Map());
-  const [now, setNow] = useState(Date.now());
-
-  // Animation loop to update current time for smooth fading
-  useEffect(() => {
-    let animationFrameId: number;
-    const animate = () => {
-      setNow(Date.now());
-      animationFrameId = requestAnimationFrame(animate);
-    };
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  // Update grid dimensions on resize
-  useEffect(() => {
-    function updateDimensions() {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight,
-        });
-      }
-    }
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
-  const { cols, rows } = getGridDimensions(dimensions.width, dimensions.height);
-
-  function handlePointerMove(e: React.PointerEvent) {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const col = Math.floor(x / GRID_SIZE);
-    const row = Math.floor(y / GRID_SIZE);
-
-    if (col >= 0 && row >= 0 && col < cols && row < rows) {
-      const key = `${col},${row}`;
-      setTrail((prev) => {
-        const next = new Map(prev);
-        next.set(key, Date.now()); // Add/update the square
-
-        // Clean up old entries from the trail
-        for (const [k, ts] of next.entries()) {
-          if (Date.now() - ts > FADE_DURATION) {
-            next.delete(k);
-          } else {
-            // Since Map iterates in insertion order, we can stop early
-            break;
-          }
-        }
-        return next;
-      });
-    }
-  }
-
-  // Fade mask for the grid
-  const maskStyle = {
-    WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
-    maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
-  };
-
   return (
     <DotBackground>
       <section
@@ -151,19 +73,19 @@ export default function Hero() {
           <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-16">
             <a
               href="#enterprise"
-              className="text-white text-2xl hover:opacity-80 transition font-montreal font-normal"
+              className="text-white text-xl hover:opacity-80 transition font-montreal font-normal"
             >
               Enterprise
             </a>
             <a
               href="#products"
-              className="text-white text-2xl hover:opacity-80 transition font-montreal font-normal"
+              className="text-white text-xl hover:opacity-80 transition font-montreal font-normal"
             >
               Products
             </a>
             <a
               href="#careers"
-              className="text-white font-normal text-2xl hover:opacity-80 transition font-montreal"
+              className="text-white font-normal text-xl hover:opacity-80 transition font-montreal"
             >
               Careers
             </a>
@@ -213,7 +135,7 @@ export default function Hero() {
             Book a Demo
             <ArrowRight
               size={16}
-              className="transition-transform group-hover:translate-x-1"
+              className="transition-transform group-hover:translate-x-1 ml-2"
             />
           </button>
         </div>
