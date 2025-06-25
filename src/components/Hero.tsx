@@ -43,7 +43,7 @@ function HeroAnnouncementTab() {
       <div className="flex items-center px-5 py-2 rounded-full bg-[#181824] shadow-[0_0_16px_4px_rgba(176,176,255,0.4)] border border-[#b0b0ff]/30">
         <FlickerLight />
         <span className="text-base font-montreal text-[#e0e0e0] tracking-wide">
-          The future of digital ventures
+        Built by founders, for founders.
         </span>
       </div>
     </div>
@@ -110,28 +110,21 @@ export default function Hero() {
 
         {/* Main content */}
         <div className="z-10 text-center max-w-4xl flex flex-col items-center pb-20 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-montreal mb-6 leading-tight">
-            Focused on building
-            <br />
+          <h1 className="text-5xl md:text-7xl font-montreal mb-6 leading-tight animate-slide-up soft-underglow">
+            We're not an agency. We're a team{' '}
             <span>
-              and{" "}
               <span className="font-editorial italic">
-                scaling digital ventures.
+                that ships.
               </span>
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-500 mb-8 max-w-2xl font-montreal">
-            We operate as a small, cross-functional team focused on shipping
-            high-impact products with{" "}
-            <span className="text-gray-100 font-editorial italic">
-              clear execution
-            </span>{" "}
-            and{" "}
-            <span className="text-gray-100 font-editorial italic">
-              long-term potential.
-            </span>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl font-montreal animate-slide-up" style={{ color: '#FFF7D6' }}>
+            Software ventures built with{' '}
+            <span className="font-editorial italic">design</span>,{' '}
+            <span className="font-editorial italic">automation</span>, and{' '}
+            <span className="font-editorial italic">speed</span>.
           </p>
-          <button className="group bg-gradient-to-b from-gray-200 to-gray-400 text-black font-medium py-3 px-6 rounded-lg border border-gray-500 shadow-[0_4px_15px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.4)] hover:from-gray-100 hover:to-gray-300 transition-all flex items-center gap-2 mt-2 font-montreal font-normal">
+          <button className="group bg-gradient-to-b from-gray-200 to-gray-400 text-black font-medium py-3 px-6 rounded-lg border border-gray-500 shadow-[0_4px_15px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.4)] hover:from-gray-100 hover:to-gray-300 transition-all flex items-center gap-2 mt-2 font-montreal font-normal btn-pulse">
             Book a Demo
             <ArrowRight
               size={16}
